@@ -10,7 +10,6 @@ export default function ScrollViewComponent({ navigation }) {
             height: "100%"
         }, 
         scrollView: {
-          backgroundColor: 'purple',
         },
       });
       
