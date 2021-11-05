@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CalendarListScreen from './ui/screens/CalendarListScreen';
 import CalendarGridScreen from './ui/screens/CalendarGridScreen';
-import NotesNavigationScreen from './ui/screens/NotesNavigationScreen';
+import NotesNavigationScreen from './ui/screens/notes/NotesNavigationScreen';
 
 const Tab = createBottomTabNavigator();
 

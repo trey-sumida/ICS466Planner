@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import ScrollViewComponent from '../components/ScrollViewComponent'
+import ScrollViewComponent from '../../components/ScrollViewComponent'
 
 export default function NotesListScreen({ navigation }) {
 
