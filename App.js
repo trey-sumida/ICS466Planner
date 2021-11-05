@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import CalendarListScreen from './ui/screens/CalendarListScreen';
-import CalendarGridScreen from './ui/screens/CalendarGridScreen';
+import CalendarListScreen from './ui/screens/calendar-list/CalendarListScreen';
+import CalendarGridScreen from './ui/screens/calendar-grid/CalendarGridScreen';
 import NotesNavigationScreen from './ui/screens/notes/NotesNavigationScreen';
 
 const Tab = createBottomTabNavigator();

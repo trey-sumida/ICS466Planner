@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text, ScrollView } from 'react-native'
-import CalendarScrollView from '../components/CalendarScrollView'
+import { View } from 'react-native'
+import CalendarScrollView from '../../components/calendar-list/CalendarScrollView'
 
 export default function CalendarListScreen() {
     return (
