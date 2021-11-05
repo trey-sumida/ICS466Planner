@@ -12,6 +12,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+      initialRouteName="List"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName;
@@ -24,15 +25,12 @@ export default function App() {
             iconName = 'pencil-outline';
           }
 
-          // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-      })}
-      tabBarOptions={{
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
-      }}
-    >
+        tabBarActiveTintColor: 'red',
+      })
+    }
+    > 
         <Tab.Screen name="List" component={CalendarListScreen} />
         <Tab.Screen name="Grid" component={CalendarGridScreen} />
         <Tab.Screen name="Notes" component={NotesScreen} />
