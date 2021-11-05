@@ -1,8 +1,8 @@
 import React from 'react'
 import { ScrollView, View, StyleSheet } from 'react-native'
-import NoteItem from './NoteItem';
+import CalendarCard from './CalendarCard';
 
-export default function ScrollViewComponent({ navigation }) {
+export default function CalendarScrollView({ navigation }) {
 
     const styles = StyleSheet.create({
         view: {
@@ -16,7 +16,12 @@ export default function ScrollViewComponent({ navigation }) {
     return (
         <View style={styles.view}>
             <ScrollView style={styles.scrollView}>
-                <NoteItem title="ICS 311" navigation={navigation}/>
+                <CalendarCard />
+                <CalendarCard />
+                <CalendarCard />
+                <CalendarCard />
+                <CalendarCard />
+                <CalendarCard />
             </ScrollView>
         </View>
     )

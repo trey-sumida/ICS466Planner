@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
+import CalendarScrollView from '../components/CalendarScrollView'
 
 export default function CalendarListScreen() {
     return (
-        <View>
-            <Text>Calendar List</Text>
+        <View style={{ flex: 1 }}>
+            <CalendarScrollView />
         </View>
     )
 }
