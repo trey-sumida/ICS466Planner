@@ -1,7 +1,8 @@
 import React from 'react'
-import { Text, ScrollView, View, StyleSheet } from 'react-native'
+import { ScrollView, View, StyleSheet } from 'react-native'
+import NoteItem from './NoteItem';
 
-export default function ScrollViewComponent() {
+export default function ScrollViewComponent({ navigation }) {
 
     const styles = StyleSheet.create({
         view: {
@@ -16,6 +17,7 @@ export default function ScrollViewComponent() {
     return (
         <View style={styles.view}>
             <ScrollView style={styles.scrollView}>
+                <NoteItem title="ICS 311" navigation={navigation}/>
             </ScrollView>
         </View>
     )

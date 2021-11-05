@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import ScrollViewComponent from '../components/ScrollViewComponent'
 
-export default function NotesListScreen() {
+export default function NotesListScreen({ navigation }) {
 
     const styles = StyleSheet.create({
         button: {
@@ -18,11 +18,12 @@ export default function NotesListScreen() {
 
     const addNote = () => {
         console.log("Adding Note");
+        navigation.navigate("Note");
     }
 
     return (
         <View style={{ flex: 1 }}>
-            <ScrollViewComponent />
+            <ScrollViewComponent navigation={navigation} />
             <View>
             <TouchableOpacity
                 style={styles.button}
