@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import ScrollViewComponent from '../components/ScrollViewComponent'
 
 export default function NotesListScreen() {
 
@@ -13,10 +14,6 @@ export default function NotesListScreen() {
         buttonText: {
             fontSize: 20
         },  
-        buttonView: {
-            flex: 1,
-            justifyContent: 'flex-end'
-        }
     });
 
     const addNote = () => {
@@ -25,8 +22,8 @@ export default function NotesListScreen() {
 
     return (
         <View style={{ flex: 1 }}>
-            <Text>Notes List Screen</Text>
-            <View style={styles.buttonView}>
+            <ScrollViewComponent />
+            <View>
             <TouchableOpacity
                 style={styles.button}
                 onPress={addNote}
