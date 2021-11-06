@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-export default function CalendarCard() {
+export default function CalendarCard({ date, description }) {
 
     const styles = StyleSheet.create({
         cardView: {
@@ -21,8 +21,9 @@ export default function CalendarCard() {
     return (
         <View style={styles.cardView}>
             <View style={styles.cardHeader}>
-                <Text>Date</Text>
+                <Text>{date}</Text>
             </View>
+            <Text>{description}</Text>
         </View>
     )
 }
