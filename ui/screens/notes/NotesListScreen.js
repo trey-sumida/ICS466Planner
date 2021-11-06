@@ -18,7 +18,7 @@ export default function NotesListScreen({ navigation }) {
 
     const addNote = () => {
         console.log("Adding Note");
-        navigation.navigate("Note");
+        navigation.navigate("Note", {title: "New Note"});
     }
 
     return (
