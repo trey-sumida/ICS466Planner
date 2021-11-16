@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ui",
+    "\\ui\\components",
+    "\\ui\\components\\calendar-list",
+    "\\ui\\components\\notes",
+    "\\ui\\screens",
+    "\\ui\\screens\\calendar-grid",
+    "\\ui\\screens\\calendar-list",
+    "\\ui\\screens\\notes"
+  ],
+  "SelectedNode": "\\ui\\screens\\notes\\NotesNavigationScreen.js",
+  "PreviewInSolutionExplorer": false
+}
