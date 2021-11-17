@@ -1,5 +1,6 @@
 import React from 'react'
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
+//import AsyncStorage from '@react-native-community/async-storage';
 
 export default function AddEvent({ route, title, color, time, location, description }) {
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
-import AddEvent from '../../components/calendar-list/AddEvent';
+//import AddEvent from '../../components/calendar-list/AddEvent';
 import CalendarScrollView from '../../components/calendar-list/CalendarScrollView'
 
 export default function CalendarListScreen( {navigation} ) {

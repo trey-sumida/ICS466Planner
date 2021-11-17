@@ -3,7 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CalendarListNavigationScreen from './ui/screens/calendar-list/CalendarListNavigationScreen';
-import CalendarGridScreen from './ui/screens/calendar-grid/CalendarGridScreen';
+import CalendarGridNavigationScreen from './ui/screens/calendar-grid/CalendarGridNavigationScreen';
 import NotesNavigationScreen from './ui/screens/notes/NotesNavigationScreen';
 
 const Tab = createBottomTabNavigator();
@@ -32,7 +32,7 @@ export default function App() {
     }
     > 
         <Tab.Screen name="List" component={CalendarListNavigationScreen} />
-        <Tab.Screen name="Grid" component={CalendarGridScreen} />
+        <Tab.Screen name="Grid" component={CalendarGridNavigationScreen} />
         <Tab.Screen name="Notes" component={NotesNavigationScreen} />
       </Tab.Navigator>
     </NavigationContainer>
