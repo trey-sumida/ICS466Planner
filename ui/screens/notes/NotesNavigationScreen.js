@@ -12,9 +12,11 @@ export default function NotesNavigationScreen() {
           <Stack.Screen
             name="NotesList"
             component={NotesListScreen}
-            options={{ headerShown: false }}
           />
-          <Stack.Screen name="Note" component={NoteScreen} />
+          <Stack.Screen 
+            name="Note" 
+            component={NoteScreen}
+             />
         </Stack.Navigator>
     )
 }

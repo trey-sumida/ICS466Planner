@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { SafeAreaView, StyleSheet } from 'react-native'
 import { Calendar } from 'react-native-calendars';
 
 export default function CalendarGridScreen() {
@@ -10,8 +10,8 @@ export default function CalendarGridScreen() {
         }
     })
     return (
-        <View style={styles.view}>
+        <SafeAreaView style={styles.view}>
             <Calendar />
-        </View>
+        </SafeAreaView>
     )
 }
