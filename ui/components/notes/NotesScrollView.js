@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useFocusEffect } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView, View, StyleSheet } from 'react-native'
 import NoteItem from './NoteItem';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function NotesScrollView({ navigation }) {
 

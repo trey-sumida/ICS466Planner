@@ -20,7 +20,7 @@ export default function NotesListScreen({ navigation }) {
         if (name in notes) {
             console.log("Name already exists");
         } else {
-            notes[name] = null;
+            notes[name] = '';
             setModalVisible(!modalVisible);
             await AsyncStorage.setItem("NOTES", JSON.stringify(notes)).then(() => {
                 navigation.navigate("Note", {title: name});

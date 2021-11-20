@@ -17,7 +17,6 @@ export default function NoteItem({ title, navigation }) {
     });
 
     const openNote = () => {
-        console.log('opening note');
         navigation.navigate("Note", {title: title});
     }
 
