@@ -33,7 +33,7 @@ export default function NotesScrollView({ navigation }) {
         <View style={styles.view}>
             <ScrollView style={styles.scrollView}>
                 {notes ? Object.keys(notes).map(keyName => (
-                    <NoteItem title={keyName} navigation={navigation} id={keyName}/>
+                    <NoteItem title={keyName} navigation={navigation} key={keyName} id={keyName}/>
                 )) : null}
             </ScrollView>
         </View>
