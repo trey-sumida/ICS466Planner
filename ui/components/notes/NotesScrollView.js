@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useFocusEffect } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView, View, StyleSheet } from 'react-native'
 import NoteItem from './NoteItem';
 
 export default function NotesScrollView({ navigation }) {
+
+    const [notes, setNotes] = useState(null);
+
+    useFocusEffect(
+        React.useCallback(() => {
+            getNotes();
+        }, [])
+    )
+
+    const getNotes = async () => {
+        await AsyncStorage.getItem("NOTES").then(notes => {
+            setNotes(JSON.parse(notes));
+        })
+    }
 
     const styles = StyleSheet.create({
         view: {
@@ -16,10 +32,9 @@ export default function NotesScrollView({ navigation }) {
     return (
         <View style={styles.view}>
             <ScrollView style={styles.scrollView}>
-                <NoteItem title="ICS 311" navigation={navigation}/>
-                <NoteItem title="ICS 314" navigation={navigation}/>
-                <NoteItem title="ICS 321" navigation={navigation}/>
-                <NoteItem title="ICS 313" navigation={navigation}/>
+                {notes ? Object.keys(notes).map(keyName => (
+                    <NoteItem title={keyName} navigation={navigation} key={keyName} id={keyName}/>
+                )) : null}
             </ScrollView>
         </View>
     )

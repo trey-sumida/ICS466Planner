@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Text, SafeAreaView } from 'react-native'
 //import AddEvent from '../../components/calendar-list/AddEvent';
+
 import CalendarScrollView from '../../components/calendar-list/CalendarScrollView'
 
 export default function CalendarListScreen( {navigation} ) {
@@ -29,15 +30,16 @@ export default function CalendarListScreen( {navigation} ) {
     }
 
     return (
-        <View style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1 }}>
             <CalendarScrollView />
-            
+
             <TouchableOpacity
                 style={styles.button}
                 onPress={addEvent}
             >
                 <Text style={styles.buttonText}>Add Event</Text>
             </TouchableOpacity>
-        </View>
+        </SafeAreaView>
+
     )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { ScrollView, View, StyleSheet, TouchableOpacity, Text } from 'react-native'
 import CalendarGridView from '../../components/calendar-grid/CalendarGridView'
 
+
 export default function CalendarGridScreen( {navigation} ) {
 
     const styles = StyleSheet.create({
