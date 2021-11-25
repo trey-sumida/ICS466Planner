@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Modal, TextInput, KeyboardAvoidingView } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import ScrollViewComponent from '../../components/notes/NotesScrollView'
+import NotesScrollView from '../../components/notes/NotesScrollView';
 
 export default function NotesListScreen({ navigation }) {
 
@@ -119,7 +119,7 @@ export default function NotesListScreen({ navigation }) {
                 </KeyboardAvoidingView>
             </Modal>
 
-            <ScrollViewComponent navigation={navigation} />
+            <NotesScrollView navigation={navigation} />
 
             <View>
             <TouchableOpacity
