@@ -9,9 +9,10 @@ import NotesNavigationScreen from './ui/screens/notes/NotesNavigationScreen';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+
   return (
     <NavigationContainer>
-      <Tab.Navigator
+          <Tab.Navigator
       initialRouteName="List"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {

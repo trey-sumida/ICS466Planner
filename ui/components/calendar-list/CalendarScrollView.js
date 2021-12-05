@@ -1,13 +1,17 @@
-import React from 'react'
-import { ScrollView, View, StyleSheet } from 'react-native'
+import React, { useState } from 'react'
+import { ScrollView, View, StyleSheet, Text, TouchableHighlight } from 'react-native'
+import { useFocusEffect } from '@react-navigation/native';
 import CalendarCard from './CalendarCard';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function CalendarScrollView({ navigation }) {
+
+    //const [events, setEvents] = useState(null);
 
     const styles = StyleSheet.create({
         view: {
             flex: 1,
             height: "100%"
-        }, 
+        },
         scrollView: {
         },
         button: {
@@ -19,18 +23,31 @@ export default function CalendarScrollView({ navigation }) {
         buttonText: {
             fontSize: 20
         },
-      });
+    });
+
+    const [events, setEvents] = useState(null);
+
+    useFocusEffect(
+        React.useCallback(() => {
+            getEvents();
+        }, [])
+    )
+
+    const getEvents = async () => {
+        await AsyncStorage.getItem("EVENTS").then(events => {
+            setEvents(JSON.parse(events));
+        })
+    }
+
+    // get event info from async
 
 
     return (
         <View style={styles.view}>
             <ScrollView style={styles.scrollView}>
-                <CalendarCard time="11/5/21" title="ICS 312 HW 8" location="UH Manoa" description="assignment" color="red"/>
-                <CalendarCard time="11/7/21" title="ICS 313 Quiz" location="UH Manoa" description="assignment" color="red" />
-                <CalendarCard time="11/10/21" title="CHEM 162L" location="UH Manoa" description="class" color="blue" />
-{/*                <CalendarCard time="11/10/21" title="CHEM 162L Lab Report" location="UH Manoa" description="assignment" color="red"/>
-                <CalendarCard time="11/11/21" title="ICS 469 Exam" location="UH Manoa" description="assignment" color="red"/>
-                <CalendarCard time="11/11/21" title="ICS 312 HW 9" location="UH Manoa" description="assignment" color="red"/>*/}
+                {events ? Object.keys(events).map(keyName => (
+                    <CalendarCard title={keyName} color={events[keyName].color} time={events[keyName].time } location={events[keyName].location } description={events[keyName].description } navigation={navigation} key={keyName} id={keyName} />
+                ))  : null }
             </ScrollView>
         </View>
     )

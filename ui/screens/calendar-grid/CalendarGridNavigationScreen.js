@@ -12,7 +12,7 @@ export default function CalendarGridNavigationScreen() {
             <Stack.Screen
                 name="CalendarList"
                 component={CalendarGridScreen}
-                options={{ headerShown: false }}
+                //options={{ headerShown: false }}
             />
             <Stack.Screen name="Add Event" component={AddEvent} />
         </Stack.Navigator>

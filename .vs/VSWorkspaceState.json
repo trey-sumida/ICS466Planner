@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\assets",
     "\\ui",
     "\\ui\\components",
-    "\\ui\\components\\calendar-grid",
     "\\ui\\components\\calendar-list",
     "\\ui\\components\\notes",
     "\\ui\\screens",
@@ -11,6 +11,6 @@
     "\\ui\\screens\\calendar-list",
     "\\ui\\screens\\notes"
   ],
-  "SelectedNode": "\\ui\\components\\calendar-grid\\CalendarGridView.js",
+  "SelectedNode": "\\ui\\components\\calendar-list\\EditEvent.js",
   "PreviewInSolutionExplorer": false
 }

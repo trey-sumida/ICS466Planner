@@ -3,7 +3,7 @@ import { ScrollView, View, StyleSheet, TouchableOpacity, Text } from 'react-nati
 import CalendarGridView from '../../components/calendar-grid/CalendarGridView'
 
 
-export default function CalendarGridScreen( {navigation} ) {
+export default function CalendarGridScreen( {navigation, route} ) {
 
     const styles = StyleSheet.create({
         view: {
@@ -24,7 +24,7 @@ export default function CalendarGridScreen( {navigation} ) {
     })
 
     const addEvent = () => {
-        console.log("Adding Event");
+        //console.log("Adding Event");
         navigation.navigate("Add Event", { title: "Add Event" });
     }
 
