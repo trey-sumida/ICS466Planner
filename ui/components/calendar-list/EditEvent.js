@@ -158,7 +158,6 @@ export default function EditEvent({ route, navigation }) {
         });
     }
 
-
     const [modalVisible, setModalVisible] = useState(false);
 
     return (

@@ -76,6 +76,7 @@ export default function AddEvent({ route, navigation }) {
         events[name] = { title: name, color: selectedValue, time: timeInput, location: locationInput, description: descriptionInput };
         if (selectedValue == null) { events[name].color = "blue" }
         await AsyncStorage.setItem("EVENTS", JSON.stringify(events)).then(() => {
+            console.log(events);
                 navigation.navigate("CalendarList");
             });
         
@@ -97,7 +98,7 @@ export default function AddEvent({ route, navigation }) {
                 <View style={styles.sections} >
                     <Text style={styles.eventText}>Type</Text>
                     <Picker
-                        selectedValue={defaultColor}
+                        selectedValue={selectedValue}
                         onValueChange={(color, itemIndex) => setSelectedValue(color)}
                     >
                         <Picker.Item label="Event" value="blue" />

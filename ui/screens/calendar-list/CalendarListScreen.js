@@ -3,6 +3,7 @@ import { View, StyleSheet, TouchableOpacity, TouchableHighlight, Text, SafeAreaV
 import AddEvent from '../../components/calendar-list/AddEvent';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
 
 import CalendarScrollView from '../../components/calendar-list/CalendarScrollView'
 
@@ -80,24 +81,52 @@ export default function CalendarListScreen({ navigation, route }) {
         navigation.navigate("Add Event");
     }
 
-    const [isBAllPress, setBAllPress] = React.useState(false);
+    useFocusEffect(
+        React.useCallback(() => {
+            getEvents();
+        }, [])
+    )
+
+    const getEvents = async () => {
+        await AsyncStorage.getItem("EVENTS").then(events => {
+            setEvents(JSON.parse(events));
+            filterEvents();
+        })
+    }
+
+    const filterEvents = () => {
+        setSomeEvents(events)
+        if (eventType !== "all") {
+            //someEvents = events.filter(function (e) { return e.color == type });
+        }
+    }
+
+
+    const [events, setEvents] = useState(null);
+    const [someEvents, setSomeEvents] = useState(null);
+
+    const [isBAllPress, setBAllPress] = React.useState(true);
     const [isBDatePress, setBDatePress] = React.useState(false);
     const [isBDeadPress, setBDeadPress] = React.useState(false);
+    let [eventType, setEventType] = React.useState("all");
 
     const bAllPresser = () => {
         setBAllPress(true);
+        setEventType("all");
         setBDatePress(false);
         setBDeadPress(false);
     }
     const bDatePresser = () => {
         setBAllPress(false);
         setBDatePress(true);
+        setEventType("blue");
         setBDeadPress(false);
     }
     const bDeadPresser = () => {
         setBAllPress(false);
         setBDatePress(false);
         setBDeadPress(true);
+        setEventType("red");
     }
 
     return (
@@ -132,7 +161,7 @@ export default function CalendarListScreen({ navigation, route }) {
                 <Text style={styles.buttonText}>Clear</Text>
             </TouchableOpacity>
 
-            <CalendarScrollView navigation={navigation} />
+            <CalendarScrollView navigation={navigation} type={eventType} />
 
             <TouchableOpacity
                 style={styles.buttonAddEvent}
@@ -144,22 +173,3 @@ export default function CalendarListScreen({ navigation, route }) {
 
     )
 }
-/*
- <View style={styles.headerBox, styles.parent}>
-                <Text style={styles.headerText}>Calendar List</Text>
-                <View style={styles.parent, {marginTop: 20, marginRight: 0, marginBottom: 0, padding: 0}}>
-                    <TouchableOpacity
-                        style={styles.buttonConfirm} >
-                        <Text style={styles.headerButtonText}>All</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.buttonConfirm} >
-                        <Text style={styles.headerButtonText}>Date</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.buttonConfirm} >
-                        <Text style={styles.headerButtonText}>Dead line</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
- * */
