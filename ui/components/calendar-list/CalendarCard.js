@@ -77,7 +77,6 @@ export default function CalendarCard({ route, navigation, title, color, time, lo
                     <View style={styles.cardBody}>
                         {(location == "" || location == null) ? null : <Text style={styles.locationText}>{location}</Text>}
                         {(description == "" || description == null) ? null : <Text style={styles.cardBodyText}>{description}</Text>}
-                        <Text style={ { textDecorationLine: 'underline', paddingTop: 5} }>Notes</Text>
                     </View>}
 
                 <View style={[styles.cardLower, styles.parent]} backgroundColor={color}>

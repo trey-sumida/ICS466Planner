@@ -11,6 +11,6 @@
     "\\ui\\screens\\calendar-list",
     "\\ui\\screens\\notes"
   ],
-  "SelectedNode": "\\ui\\screens\\calendar-list\\CalendarListScreen.js",
+  "SelectedNode": "\\ui\\components\\calendar-list\\CalendarCard.js",
   "PreviewInSolutionExplorer": false
 }
