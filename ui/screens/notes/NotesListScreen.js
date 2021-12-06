@@ -82,6 +82,7 @@ export default function NotesListScreen({ navigation }) {
         },
     });
 
+
     return (
         <View style={{ flex: 1 }}>
             <Modal
