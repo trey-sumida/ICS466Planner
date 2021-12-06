@@ -11,11 +11,13 @@ export default function NotesNavigationScreen() {
         <Stack.Navigator>
           <Stack.Screen
             name="NotesList"
+            options={{ title: 'Notes' }}
             component={NotesListScreen}
           />
           <Stack.Screen 
             name="Note" 
             component={NoteScreen}
+            options={({ route }) => ({ title: route.params.title })}
              />
         </Stack.Navigator>
     )

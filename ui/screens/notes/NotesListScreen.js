@@ -23,6 +23,7 @@ export default function NotesListScreen({ navigation }) {
             notes[name] = '';
             setModalVisible(!modalVisible);
             await AsyncStorage.setItem("NOTES", JSON.stringify(notes)).then(() => {
+                navigation.setOptions({ title: name});
                 navigation.navigate("Note", {title: name});
             });
         }
