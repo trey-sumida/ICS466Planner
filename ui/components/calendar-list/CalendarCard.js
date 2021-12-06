@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Button, Platform} from 'react-native';
 import { Foundation } from '@expo/vector-icons';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function CalendarCard({ route, navigation, title, color, time, location, description }) {
@@ -19,7 +20,7 @@ export default function CalendarCard({ route, navigation, title, color, time, lo
         },
         cardTopDateText: {
             color: "white",
-            fontSize: 15,
+            fontSize: 12,
         },
         cardHeader: {
             padding: 5,
@@ -62,13 +63,14 @@ export default function CalendarCard({ route, navigation, title, color, time, lo
         navigation.navigate("Edit Event", { title: title });
     }
 
+    const monthsName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     return (
         <View>
             <View style={styles.cardView} borderColor={color}>
                 <View style={[styles.cardHeader, styles.parent]} backgroundColor={color}>
                     <Text style={[styles.cardTopText, styles.textLeft]} >{title}</Text>
-                    <Text style={[styles.cardTopDateText, styles.textRight]} >{time}</Text >
+                    {time ? <Text style={[styles.cardTopDateText, styles.textRight]}>{(new Date(time)).getFullYear()}, {monthsName[(new Date(time)).getMonth()]} {(new Date(time)).getDate()} {(new Date(time)).getHours()}:{(new Date(time)).getMinutes()}</Text> : null}
                 </View>
 
                 {((location == "" || location == null) && (description == "" || description == null)) ? null :

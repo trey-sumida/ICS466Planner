@@ -34,7 +34,6 @@ export default function App() {
     }
     > 
         <Tab.Screen name="List" component={CalendarListNavigationScreen} />
-        <Tab.Screen name="Grid" component={CalendarGridNavigationScreen} />
         <Tab.Screen name="Notes" component={NotesNavigationScreen} />
       </Tab.Navigator>
     </NavigationContainer>

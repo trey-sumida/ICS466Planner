@@ -133,13 +133,13 @@ export default function CalendarListScreen({ navigation, route }) {
         <SafeAreaView style={{ flex: 1 }}>
             <View style={[styles.headerBox, styles.parent]}>
                 <View style={[styles.parent, styles.iconSelector]}>
-                    <TouchableOpacity >
+                    {/*<TouchableOpacity >
                         <AntDesign style={styles.iconLSelector} name="leftcircle" size={25} color="black" />
-                    </TouchableOpacity>
-                    <Text style={styles.headerText}>Date</Text>
-                    <TouchableOpacity>
+                    </TouchableOpacity>*/}
+                    <Text style={styles.headerText}>Planner</Text>
+                    {/*<TouchableOpacity>
                         <AntDesign style={styles.iconRSelector} name="rightcircle" size={25} color="black" />
-                    </TouchableOpacity>
+                    </TouchableOpacity>*/}
                 </View>
                 <View style={[styles.parent, styles.buttonAlign]}>
                     <TouchableHighlight onPress={() => bAllPresser()}
@@ -148,7 +148,7 @@ export default function CalendarListScreen({ navigation, route }) {
                     </TouchableHighlight>
                     <TouchableHighlight onPress={() => bDatePresser()}
                         style={isBDatePress ? styles.buttonSelectorPressed : styles.buttonSelector} >
-                        <Text style={styles.headerButtonText}>Date</Text>
+                        <Text style={styles.headerButtonText}>Class</Text>
                     </TouchableHighlight>
                     <TouchableHighlight onPress={() => bDeadPresser()}
                         style={isBDeadPress ? styles.buttonSelectorPressed : styles.buttonSelector} >
@@ -156,10 +156,10 @@ export default function CalendarListScreen({ navigation, route }) {
                     </TouchableHighlight>
                 </View>
             </View>
-            <TouchableOpacity
+            {/*<TouchableOpacity
                 onPress={clearData}>
                 <Text style={styles.buttonText}>Clear</Text>
-            </TouchableOpacity>
+            </TouchableOpacity>*/}
 
             <CalendarScrollView navigation={navigation} type={eventType} />
 

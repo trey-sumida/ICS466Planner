@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { View, ScrollView, TextInput, Text, StyleSheet, TouchableOpacity, Modal, KeyboardAvoidingView } from 'react-native';
+import { View, ScrollView, TextInput, Text, StyleSheet, TouchableOpacity, Modal, KeyboardAvoidingView, Button, Platform } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { Foundation } from '@expo/vector-icons';
 
 export default function EditEvent({ route, navigation }) {
@@ -100,13 +101,36 @@ export default function EditEvent({ route, navigation }) {
         },
     })
 
+    const monthsName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let [events, setEvents] = useState(null);
     let [name, setName] = useState(null);
     let [selectedValue, setSelectedValue] = useState(null);
-    let [timeInput, setTime] = useState(null);
+    //let [timeInput, setTime] = useState(null);
     let [locationInput, setLocation] = useState(null);
     let [descriptionInput, setDescription] = useState(null);
     let defaultColor = "blue";
+    const [date, setDate] = useState(new Date(1598051730000));
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
+
+    const onChange = (day, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(Platform.OS === 'ios');
+        setDate(currentDate);
+    };
+
+    const showMode = (currentMode) => {
+        setShow(true);
+        setMode(currentMode);
+    };
+
+    const showDatepicker = () => {
+        showMode('date');
+    };
+
+    const showTimepicker = () => {
+        showMode('time');
+    };
 
     useFocusEffect(
         React.useCallback(() => {
@@ -120,7 +144,7 @@ export default function EditEvent({ route, navigation }) {
             const currEvent = allEvents[route.params.title];
             setName(currEvent.title);
             setSelectedValue(currEvent.color);
-            setTime(currEvent.time);
+            setDate(new Date(currEvent.time));
             setLocation(currEvent.location);
             setDescription(currEvent.description);
             setEvents(allEvents);
@@ -136,7 +160,7 @@ export default function EditEvent({ route, navigation }) {
         setModalVisible(!modalVisible);
     }
 
-    removeValue = async (name) => {
+    const removeValue = async (name) => {
         try {
             delete events[name];
             await AsyncStorage.setItem("EVENTS", JSON.stringify(events));
@@ -150,7 +174,7 @@ export default function EditEvent({ route, navigation }) {
     }
 
     const save = async () => {
-        events[name] = { title: name, color: selectedValue, time: timeInput, location: locationInput, description: descriptionInput };
+        events[name] = { title: name, color: selectedValue, time: date, location: locationInput, description: descriptionInput };
 
         console.log(events);
         await AsyncStorage.setItem("EVENTS", JSON.stringify(events)).then(() => {
@@ -172,18 +196,31 @@ export default function EditEvent({ route, navigation }) {
                         selectedValue={selectedValue}
                         onValueChange={(color, itemIndex) => setSelectedValue(color)}
                     >
-                        <Picker.Item label="Event" value="blue" />
+                        <Picker.Item label="Class" value="blue" />
                         <Picker.Item label="Deadline" value="red" />
                     </Picker>
                 </View>
                 <View>
-                    <Text style={styles.eventText}>Time</Text>
-                    <TextInput
-                        style={styles.inputBox}
-                        editable
-                        value={timeInput}
-                        onChangeText={text => setTime(text)}
-                    />
+                    <View>
+                        <Text>{date.getFullYear()}, {monthsName[date.getMonth()]} {date.getDate()}</Text>
+                        <Text>{date.getHours()}:{date.getMinutes()}</Text>
+                        <View>
+                            <Button onPress={showDatepicker} title="Show date picker!" />
+                        </View>
+                        <View>
+                            <Button onPress={showTimepicker} title="Show time picker!" />
+                        </View>
+                        {show && ( 
+                            <DateTimePicker
+                                testID="dateTimePicker"
+                                value={date}
+                                mode={mode}
+                                is24Hour={true}
+                                display="default"
+                                onChange={onChange}
+                            />
+                        )}
+                    </View>
                 </View>
                 <View style={styles.sections} >
                     <Text style={styles.eventText}>Location</Text>

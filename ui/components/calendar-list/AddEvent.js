@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Text, StyleSheet, TouchableOpacity, TextInput} from 'react-native';
+import { ScrollView, View, Text, StyleSheet, TouchableOpacity, TextInput, Button, Platform} from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function AddEvent({ route, navigation }) {
@@ -54,13 +55,35 @@ export default function AddEvent({ route, navigation }) {
 
     })
 
+    const monthsName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const [events, setEvents] = useState(null);
     const [title, onChangeTitle] = React.useState(null);
     const [selectedValue, setSelectedValue] = useState(null);
-    const [timeInput, setTime] = useState(null);
+    //const [timeInput, setTime] = useState(null);
     const [locationInput, setLocation] = useState(null);
     const [descriptionInput, setDescription] = useState(null);
-    const defaultColor = "blue";
+    const [date, setDate] = useState(new Date(1598051730000));
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
+
+    const onChange = (day, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(Platform.OS === 'ios');
+        setDate(currentDate);
+    };
+
+    const showMode = (currentMode) => {
+        setShow(true);
+        setMode(currentMode);
+    };
+
+    const showDatepicker = () => {
+        showMode('date');
+    };
+
+    const showTimepicker = () => {
+        showMode('time');
+    };
 
     // create events info
 
@@ -73,10 +96,10 @@ export default function AddEvent({ route, navigation }) {
         } else if (name == null) {
             throw new Error("Name is null");
         }
-        events[name] = { title: name, color: selectedValue, time: timeInput, location: locationInput, description: descriptionInput };
+        events[name] = { title: name, color: selectedValue, time: date, location: locationInput, description: descriptionInput };
         if (selectedValue == null) { events[name].color = "blue" }
         await AsyncStorage.setItem("EVENTS", JSON.stringify(events)).then(() => {
-            console.log(events);
+            console.log(date.getFullYear() + ", " + monthsName[date.getMonth()] + " " + date.getDate());
                 navigation.navigate("CalendarList");
             });
         
@@ -101,18 +124,31 @@ export default function AddEvent({ route, navigation }) {
                         selectedValue={selectedValue}
                         onValueChange={(color, itemIndex) => setSelectedValue(color)}
                     >
-                        <Picker.Item label="Event" value="blue" />
+                        <Picker.Item label="Class" value="blue" />
                         <Picker.Item label="Deadline" value="red" />
                     </Picker>
                 </View>
 
                 <View style={styles.sections} >
-                    <Text style={styles.eventText}>Time</Text>
-                    <TextInput
-                        style={styles.inputBox}
-                        value={timeInput}
-                        onChangeText={setTime}
-                        />
+                    <View>
+                        <Text>{date.getFullYear()}, {monthsName[date.getMonth()]} {date.getDate()}</Text>
+                        <View>
+                            <Button onPress={showDatepicker} title="Show date picker!" />
+                        </View>
+                        <View>
+                            <Button onPress={showTimepicker} title="Show time picker!" />
+                        </View>
+                        {show && (
+                            <DateTimePicker
+                                testID="dateTimePicker"
+                                value={date}
+                                mode={mode}
+                                is24Hour={true}
+                                display="default"
+                                onChange={onChange}
+                            />
+                        )}
+                    </View>
                 </View>
 
                 <View style={styles.sections} >

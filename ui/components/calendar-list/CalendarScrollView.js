@@ -26,9 +26,12 @@ export default function CalendarScrollView({ navigation, type }) {
         noneLeftText: {
             fontSize: 15,
             textAlign: "center",
+            marginTop: 30,
         },
     });
 
+    const blueColor = "#3176ce";
+    const redColor = "#d04848";
     const [events, setEvents] = useState(null);
     var [someEvents, setSomeEvents] = useState(null);
 
@@ -42,15 +45,9 @@ export default function CalendarScrollView({ navigation, type }) {
         await AsyncStorage.getItem("EVENTS").then(events => {
             setEvents(JSON.parse(events));
             setSomeEvents(JSON.parse(events));
-            //console.log("new");
-            //console.log(someEvents);
-            //console.log(events);
-            //filterEvents();
-            console.log("new");
-            console.log(someEvents);
+            console.log(events);
         })
     }
-
 
     // get event info from async
 
@@ -60,16 +57,16 @@ export default function CalendarScrollView({ navigation, type }) {
                 {someEvents ? Object.keys(someEvents).map(keyName => {
                     {
                     if (type == "red" && someEvents[keyName].color == "red") {
-                        console.log("1 red")
-                        return <CalendarCard title={keyName} color={someEvents[keyName].color} time={someEvents[keyName].time} location={someEvents[keyName].location} description={someEvents[keyName].description} navigation={navigation} key={keyName} id={keyName} />
+                        return <CalendarCard title={keyName} color={redColor} time={someEvents[keyName].time} location={someEvents[keyName].location} description={someEvents[keyName].description} navigation={navigation} key={keyName} id={keyName} />
                     }
                     if (type == "blue" && someEvents[keyName].color == "blue") {
-                        console.log("2 blue")
-                        return <CalendarCard title={keyName} color={someEvents[keyName].color} time={someEvents[keyName].time} location={someEvents[keyName].location} description={someEvents[keyName].description} navigation={navigation} key={keyName} id={keyName} />
+                        return <CalendarCard title={keyName} color={blueColor} time={someEvents[keyName].time} location={someEvents[keyName].location} description={someEvents[keyName].description} navigation={navigation} key={keyName} id={keyName} />
                     }
-                    if (type == "all") {
-                        console.log("3 all")
-                        return <CalendarCard title={keyName} color={someEvents[keyName].color} time={someEvents[keyName].time} location={someEvents[keyName].location} description={someEvents[keyName].description} navigation={navigation} key={keyName} id={keyName} />
+                        if (type == "all" && someEvents[keyName].color == "blue") {
+                            return <CalendarCard title={keyName} color={blueColor} time={someEvents[keyName].time} location={someEvents[keyName].location} description={someEvents[keyName].description} navigation={navigation} key={keyName} id={keyName} />
+                    }
+                    if (type == "all" && someEvents[keyName].color == "red") {
+                        return <CalendarCard title={keyName} color={redColor} time={someEvents[keyName].time} location={someEvents[keyName].location} description={someEvents[keyName].description} navigation={navigation} key={keyName} id={keyName} />
                     }
                     }
                 }) : <Text style={styles.noneLeftText}>no events made, you should make one :-)</Text>}
