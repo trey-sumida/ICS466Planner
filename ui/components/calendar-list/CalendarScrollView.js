@@ -30,7 +30,7 @@ export default function CalendarScrollView({ navigation, type }) {
         },
     });
 
-    const blueColor = "#3176ce";
+    const blueColor = "#64b9ee";
     const redColor = "#d04848";
     const [events, setEvents] = useState(null);
     var [someEvents, setSomeEvents] = useState(null);

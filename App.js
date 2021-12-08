@@ -17,6 +17,7 @@ export default function App() {
       initialRouteName="List"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
+          size = 30;
           let iconName;
 
           if (route.name === 'List') {
@@ -29,8 +30,10 @@ export default function App() {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'red',
+        tabBarActiveTintColor: '#edcf2e',
+        tabBarInactiveTintColor: 'white',
         headerShown: false,
+        tabBarStyle: { backgroundColor: "#64b9ee" },
       })
     }
     > 

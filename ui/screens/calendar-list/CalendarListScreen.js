@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, TouchableOpacity, TouchableHighlight, Text, SafeAreaView } from 'react-native'
-import AddEvent from '../../components/calendar-list/AddEvent';
-import { Ionicons, AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -18,12 +16,12 @@ export default function CalendarListScreen({ navigation, route }) {
         },
         buttonAddEvent: {
             alignItems: "center",
-            backgroundColor: "#DDDDDD",
+            backgroundColor: "#edcf2e",
             padding: 10,
             width: '100%',
         },
         headerBox: {
-            backgroundColor: "#FFF",
+            backgroundColor: "#64b9ee",
             paddingTop: 20,
             elevation: 5,
         },
@@ -55,7 +53,7 @@ export default function CalendarListScreen({ navigation, route }) {
         buttonSelectorPressed: {
             alignItems: "center",
             padding: 5,
-            backgroundColor: "#00DDDD",
+            backgroundColor: "#edcf2e",
         },
         headerButtonText: {
             textAlignVertical: "center",
@@ -130,7 +128,7 @@ export default function CalendarListScreen({ navigation, route }) {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#002456' }}>
             <View style={[styles.headerBox, styles.parent]}>
                 <View style={[styles.parent, styles.iconSelector]}>
                     {/*<TouchableOpacity >

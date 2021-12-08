@@ -11,7 +11,7 @@ export default function NotesNavigationScreen() {
         <Stack.Navigator>
           <Stack.Screen
             name="NotesList"
-            options={{ title: 'Notes' }}
+            options={{ title: 'Notes', headerStyle: { backgroundColor: "#64b9ee" } }}
             component={NotesListScreen}
           />
           <Stack.Screen 

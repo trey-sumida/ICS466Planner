@@ -21,6 +21,7 @@ export default function NotesListScreen({ navigation }) {
             console.log("Name already exists");
         } else {
             notes[name] = '';
+            onChangeText(null);
             setModalVisible(!modalVisible);
             await AsyncStorage.setItem("NOTES", JSON.stringify(notes)).then(() => {
                 navigation.setOptions({ title: name});
@@ -32,7 +33,7 @@ export default function NotesListScreen({ navigation }) {
     const styles = StyleSheet.create({
         button: {
             alignItems: "center",
-            backgroundColor: "#DDDDDD",
+            backgroundColor: "#edcf2e",
             padding: 10,
             width: '100%',
         },
@@ -85,7 +86,7 @@ export default function NotesListScreen({ navigation }) {
 
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: '#002456' }}>
             <Modal
                 avoidKeyboard={true}
                 animationType="slide"
