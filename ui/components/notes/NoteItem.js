@@ -8,16 +8,19 @@ export default function NoteItem({ title, navigation }) {
 
     const styles = StyleSheet.create({
         button: {
+            marginTop: 5,
             alignItems: "center",
-            backgroundColor: "#000000",
+            backgroundColor: "#64b9ee",
             padding: 10,
             width: '100%',
+            borderColor: 'white',
+            borderWidth: 1,
         },
         buttonText: {
             fontSize: 20,
-            color: 'white'
         },
         delete: {
+            marginTop: 5,
             backgroundColor: "red",
             color: "white",
             height: "100%",

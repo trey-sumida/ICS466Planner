@@ -23,7 +23,7 @@ export default function NotesScrollView({ navigation }) {
     const styles = StyleSheet.create({
         view: {
             flex: 1,
-            height: "100%"
+            height: "100%",
         }
       });
 
