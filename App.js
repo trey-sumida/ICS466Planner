@@ -2,17 +2,18 @@ import * as React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import CalendarListNavigationScreen from './ui/screens/calendar-list/CalendarListNavigationScreen';
-import CalendarGridNavigationScreen from './ui/screens/calendar-grid/CalendarGridNavigationScreen';
 import NotesNavigationScreen from './ui/screens/notes/NotesNavigationScreen';
+import SplashScreen from './ui/screens/SplashScreen';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 
-  return (
-    <NavigationContainer>
-          <Tab.Navigator
+  const mainTabsNavigation = () => {
+    return <Tab.Navigator
       initialRouteName="List"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
@@ -36,6 +37,15 @@ export default function App() {
         <Tab.Screen name="List" component={CalendarListNavigationScreen} />
         <Tab.Screen name="Notes" component={NotesNavigationScreen} />
       </Tab.Navigator>
+  }
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="splashScreen" component={SplashScreen}/>
+        <Stack.Screen name="mainTabs" component={mainTabsNavigation}/>
+      </Stack.Navigator>
+      
     </NavigationContainer>
   );
 }
